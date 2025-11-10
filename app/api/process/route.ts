@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import XLSX from 'xlsx'
 import { getEmailFromLinkedIn } from '@/services/linkedinService'
+
+// Use require for xlsx as it works better in Next.js API routes
+const XLSX = require('xlsx')
 
 export async function POST(request: NextRequest) {
   try {
