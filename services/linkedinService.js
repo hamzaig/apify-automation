@@ -1,17 +1,18 @@
 import { ApifyClient } from 'apify-client';
 
-// Initialize the ApifyClient with API token
-const client = new ApifyClient({
-    token: '',
-});
-
 /**
  * Fetches email from a LinkedIn profile URL using Apify
  * @param {string} linkedinUrl - The LinkedIn profile URL
+ * @param {string} apifyToken - The Apify API token
  * @returns {Promise<string|null>} - The email address or null if not found
  */
-export async function getEmailFromLinkedIn(linkedinUrl) {
+export async function getEmailFromLinkedIn(linkedinUrl, apifyToken) {
     try {
+        // Initialize the ApifyClient with API token
+        const client = new ApifyClient({
+            token: apifyToken,
+        });
+
         // Prepare Actor input
         const input = {
             "linkedin_profile_url": linkedinUrl
